@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import localFont from "next/font/local";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const satoshi = localFont({
+  src: "/fonts/Satoshi-Variable.ttf",
 });
 
 export const metadata: Metadata = {
@@ -23,11 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" className={satoshi.className}>
+      <body className="min-h-screen bg-neutral-950 text-gray-900">
+        <div className="max-w-7xl mx-auto px-4">{children}</div>
       </body>
     </html>
   );
